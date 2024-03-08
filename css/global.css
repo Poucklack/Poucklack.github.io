@@ -25,7 +25,7 @@ img {
 
 .subtitulo {
   font-size: 9rem;
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
   word-break: break-all;
   max-width: 4ch;
