@@ -1,0 +1,135 @@
+.experiencia {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 100px;
+}
+
+.experiencia-texto {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  max-width: 48ch;
+  margin-bottom: 68px;
+  color: #544053;
+}
+
+.experiencia-texto strong {
+  line-height: 2rem;
+  color: #350239;
+}
+
+.empresa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px;
+  background-color: #f2faff;
+  margin-bottom: 32px;
+  border-radius: 4px;
+  position: relative;
+  gap: 20px 30px;
+  border-radius: 5px;
+}
+
+.empresa-ano {
+  position: absolute;
+  top: 20px;
+  left: -100px;
+  max-width: 80px;
+  text-align: right;
+}
+
+.empresa::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 24px;
+  background: var(--linear, linear-gradient(180deg, #d9d2ff 0%, #74c4dd 100%));
+  border-radius: 3px;
+  position: absolute;
+  top: 20px;
+  left: -4px;
+}
+
+.empresa-titulo {
+  font-size: 1.25rem;
+  line-height: 1.1rem;
+  font-weight: semibold;
+}
+
+.empresa-texto {
+  font-size: 1rem;
+  line-height: 1.4rem;
+  font-weight: normal;
+  gap: 10px;
+}
+
+.empresa-habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: start;
+}
+
+.empresa-habilidades li {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border-radius: 4px;
+  background: #d9d2ff;
+  padding: 5px 10px;
+}
+
+@media (max-width: 800px) {
+  .experiencia {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .experiencia .subtitulo {
+    background-color: #d9d2ff;
+    max-width: 80ch;
+    font-size: 3rem;
+    line-height: 3.8rem;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .empresa-ano {
+    position: initial;
+    width: initial;
+    order: 1;
+    text-align: left;
+    text-decoration: underline #d9d2ff;
+  }
+}
+
+@media (max-width: 400px) {
+  .experiencia .subtitulo {
+    background-color: #d9d2ff;
+    font-size: 3rem;
+    line-height: 3.8rem;
+    text-align: center;
+  }
+
+  .experiencia-texto {
+    font-size: 1rem;
+    text-align: right left;
+    margin-left: 10px;
+  }
+
+  .empresa-habilidades li {
+    font-size: 0.5rem;
+    line-height: 1rem;
+    border-radius: 4px;
+    background: #d9d2ff;
+    padding: 5px 10px;
+  }
+
+  .empresa-texto {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    font-weight: normal;
+    gap: 10px;
+  }
+}
