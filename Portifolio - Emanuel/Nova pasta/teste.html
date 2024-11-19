@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio dos Copos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        .cup-container {
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+        }
+
+        .cup {
+            width: 100px;
+            height: 200px;
+            border: 2px solid #000;
+            background-color: #e0e0e0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .liquid {
+            background-color: #2196F3;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .label {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Desafio dos Copos</h1>
+    <p>Distribua o líquido para deixar dois copos com 200ml cada.</p>
+
+    <div class="cup-container">
+        <div class="cup" id="small-cup" onclick="selectCup('small')">
+            <div class="liquid" id="small-liquid" style="height: 100%;"></div>
+            <div class="label" id="small-label">150ml</div>
+        </div>
+        <p>Pequeno (150ml)</p>
+    </div>
+
+    <div class="cup-container">
+        <div class="cup" id="medium-cup" onclick="selectCup('medium')">
+            <div class="liquid" id="medium-liquid" style="height: 0%;"></div>
+            <div class="label" id="medium-label">0ml</div>
+        </div>
+        <p>Médio (250ml)</p>
+    </div>
+
+    <div class="cup-container">
+        <div class="cup" id="large-cup" onclick="selectCup('large')">
+            <div class="liquid" id="large-liquid" style="height: 62.5%;"></div>
+            <div class="label" id="large-label">250ml</div>
+        </div>
+        <p>Grande (400ml)</p>
+    </div>
+
+    <script>
+        const cups = {
+            small: { capacity: 150, current: 150, element: document.getElementById('small-liquid'), label: document.getElementById('small-label') },
+            medium: { capacity: 250, current: 0, element: document.getElementById('medium-liquid'), label: document.getElementById('medium-label') },
+            large: { capacity: 400, current: 250, element: document.getElementById('large-liquid'), label: document.getElementById('large-label') }
+        };
+
+        let selectedCup = null;
+
+        function selectCup(cup) {
+            if (selectedCup === null) {
+                selectedCup = cup;
+                alert(`Você selecionou o copo ${cup}. Agora clique no copo para onde deseja transferir o líquido.`);
+            } else if (selectedCup !== cup) {
+                transfer(selectedCup, cup);
+                selectedCup = null;
+            } else {
+                selectedCup = null;
+                alert('Seleção cancelada.');
+            }
+        }
+
+        function transfer(from, to) {
+            const availableSpace = cups[to].capacity - cups[to].current;
+            const amountToTransfer = Math.min(cups[from].current, availableSpace);
+
+            cups[from].current -= amountToTransfer;
+            cups[to].current += amountToTransfer;
+
+            updateCups();
+            checkWinCondition();
+        }
+
+        function updateCups() {
+            for (let key in cups) {
+                const percentage = (cups[key].current / cups[key].capacity) * 100;
+                cups[key].element.style.height = percentage + '%';
+                cups[key].label.textContent = cups[key].current + 'ml';
+            }
+        }
+
+        function checkWinCondition() {
+            if ((cups.medium.current === 200 && cups.small.current === 200) ||
+                (cups.medium.current === 200 && cups.large.current === 200) ||
+                (cups.small.current === 200 && cups.large.current === 200)) {
+                alert("Parabéns! Você conseguiu deixar dois copos com 200ml.");
+            }
+        }
+
+        updateCups();
+    </script>
+</body>
+
+</html>
