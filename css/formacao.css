@@ -1,3 +1,4 @@
+
 .formacao {
   background: #1c111b;
 }
@@ -19,7 +20,7 @@
   margin-top: 40px;
 }
 .subtitulo {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .formacao-destaque {
@@ -50,7 +51,7 @@
   background-color: #221d24;
   border-radius: 4px;
   display: flex;
-  flex-direction: column;
+  flex-direction: wrap;
   margin-bottom: 20px;
   border: 1px solid;
   border-image: linear-gradient(
@@ -73,6 +74,7 @@
   margin-bottom: 60px;
 }
 .faculdade-cursoo {
+ flex-direction: column;
   font-size: 1.125rem;
   line-height: 1.4;
   background: linear-gradient(180deg, #d9d2ff 0%, #74c4dd 100%);
@@ -127,12 +129,12 @@
 }
 
 .formacao-curso {
-  display: flex;
   margin-bottom: 20px;
-  position: relative;
+  margin-top: 60px;
 }
 
 .curso {
+  margin-top: 60px;
   font-weight: 300;
   color: rgba(227, 245, 255, 0.5);
 }
@@ -164,6 +166,7 @@
   font-weight: 400;
   margin-bottom: 40px;
 }
+
 
 @media (max-width: 800px) {
   .formacao-container {
@@ -239,3 +242,4 @@
     left: -20px;
   }
 }
+
